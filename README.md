@@ -22,7 +22,9 @@
 - [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Installation](#installation)
+- [Import](#import)
 - [How to use](#how-to-use)
+	- [Compact version](#compact-version)
 - [Options](#options)
 	- [Custom language](#custom-language)
 	- [Custom theme](#custom-theme)
@@ -59,13 +61,12 @@ To install JSON Menu, you can use the following [pip](https://pip.pypa.io/en/sta
 pip install jsonmenu
 ```
 
-Alternatively, you can clone the repository and run the following command:
+Alternatively, you can clone the repository from GitHub or download the source code from the [releases page](https://github.com/xavi-burgos99/jsonmenu/releases/) and include the `jsonmenu.py` file in your project.
 
-```bash
-python setup.py install
-```
 
-or include the 'jsonmenu.py' file in your project and import it as a module in your Python scripts.
+## Import
+
+Once installed, you can import the library in your Python script with the following line:
 
 ```python
 from jsonmenu import JsonMenu
@@ -102,8 +103,8 @@ Also, you can add an options dictionary to customize the menu, explained at [opt
 
 ```python
 custom_options = {
-	"language": "es",
-	"theme": "rounded"
+	"theme": "rounded",
+	# More options here...
 }
 ```
 
@@ -111,6 +112,34 @@ Then, you can create the menu with the following code:
 
 ```python
 jm = JsonMenu("My first menu", menu_data, custom_options)
+jm.show()
+```
+
+
+### Compact version
+
+A compact version of the previous code to create and show the menu is the following:
+
+```python
+jm = JsonMenu("My first menu", [
+	{
+		"label": "My first action",
+		"action": my_function
+	},
+	{
+		"label": "Submenu",
+		"submenu": [
+			{
+				"label": "Option 1",
+				"action": custom_function_1
+			},
+			{
+				"label": "Option 2",
+				"action": custom_function_2
+			}
+		]
+	}
+], { "theme": "rounded" })
 jm.show()
 ```
 
